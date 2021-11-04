@@ -1,7 +1,4 @@
-class PlotType:
-    PIE = 'pie'
-    HISTOGRAM = 'histogram'
-    BAR = 'bar'
+from constants import PlotType, VarType, SubType
 
 
 def clear_value(value):
@@ -22,13 +19,22 @@ def clear_value(value):
     return None
 
 
-def get_plot_type(var_type, data):
-    if var_type == 1:
-        return PlotType.PIE
-
-    if var_type == 2:
+def get_sub_type(var_type, data):
+    if var_type == VarType.QUANTITATIVE:
         for item in data:
             if type(item) == float:
-                return PlotType.HISTOGRAM
+                return SubType.CONTINUOUS
+        return SubType.DISCRETE
+    
+    return None
+
+
+def get_plot_type(var_type, sub_type):
+    if var_type == VarType.QUALITATIVE:
+        return PlotType.PIE
+
+    if var_type == VarType.QUANTITATIVE:
+        if sub_type == SubType.CONTINUOUS:
+            return PlotType.HISTOGRAM
         
         return PlotType.BAR

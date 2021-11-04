@@ -1,5 +1,5 @@
 from utils import clear_value
-
+from constants import VarType
 
 def get_var_type():
     while True:
@@ -7,8 +7,10 @@ def get_var_type():
             var_type = int(
                 input("Informe o tipo de variável: '1' qualitativa ou '2' quantitativa\n-> ")
             )
-            if var_type in [1, 2]:
-                return var_type
+            if var_type == 1:
+                return VarType.QUALITATIVE
+            elif var_type == 2:
+                return VarType.QUANTITATIVE
             else:
                 raise KeyError
         except Exception:
@@ -41,7 +43,7 @@ def get_data(var_type, entry_method):
                 if value == '0':
                     raise KeyError
                 else:
-                    if var_type == 2:
+                    if var_type == VarType.QUANTITATIVE:
                         value = clear_value(value)
                     if value:
                         data.append(value)
@@ -66,8 +68,8 @@ def get_data(var_type, entry_method):
         lines = file.readlines()
 
         for value in lines:
-            value = value.replace('\n', '')
-            if var_type == 2:
+            value = value.replace('\n', '').replace(' ', '')
+            if var_type == VarType.QUANTITATIVE:
                 value = clear_value(value)
             if value:
                 data.append(value)

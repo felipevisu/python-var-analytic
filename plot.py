@@ -15,6 +15,7 @@ def plot_pie(data):
     _, ax1 = plt.subplots()
     ax1.pie(values, labels=labels, autopct='%d%%')
     ax1.axis('equal')
+    plt.title('Gráfico de setores')
     plt.show()
 
 
@@ -31,12 +32,14 @@ def plot_bar(data):
 
     _, ax1 = plt.subplots()
     ax1.bar(labels, values)
+    plt.title('Gráfico de barras')
     plt.show()
 
 
 def plot_histogram(data):
     _, ax1 = plt.subplots()
-    ax1.hist(data)
+    ax1.hist(data, density=True)
+    plt.title('Histograma')
     plt.show()
 
 
