@@ -1,4 +1,7 @@
-# python-var-analytic
+## Segundo trabalho prático de estatística
+**Ciência da Computação - UFSJ - 2021/2 | Felipe Henrique Faria**
+
+---
 
 Em um ambiente virtualenv com Python3 instalar as dependências do arquivo `requirements.txt`
 
